@@ -4,11 +4,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private WebView myWebView;
+
 
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
@@ -49,7 +55,14 @@ public class MainActivity extends AppCompatActivity {
            showing your App. One (1) screenshot showing your internal web page and
            one (1) screenshot showing your external web page.
         */
+
+
+    myWebView = findViewById(R.id.my_webview);
+
+    myWebView.setWebViewClient(new WebViewClient());
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
