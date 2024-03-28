@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showExternalWebPage(){
-        // TODO: Add your code for showing external web page here
+          myWebView.loadUrl("file://studentnas1/StudentHome/2019/b19sarme/Desktop/HTML/MinHTMLFIL.html");
     }
 
     public void showInternalWebPage(){
-        // TODO: Add your code for showing internal web page here
+        myWebView.loadUrl("file:///C:/Users/b19sarme/AndroidStudioProjects/mobileapp-programming-webview/app/src/main/assets/HTML/MinHTMLFIL.html");
     }
 
     @Override
