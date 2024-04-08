@@ -1,7 +1,6 @@
 package com.example.webviewapp;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -16,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
 
 
-    public void showExternalWebPage(){
-          myWebView.loadUrl("file://studentnas1/StudentHome/2019/b19sarme/Desktop/HTML/MinHTMLFIL.html");
+    public void showExternalWebPage() {
+        myWebView.loadUrl("https://www.his.se/");
     }
 
-    public void showInternalWebPage(){
-        myWebView.loadUrl("file:///C:/Users/b19sarme/AndroidStudioProjects/mobileapp-programming-webview/app/src/main/assets/HTML/MinHTMLFIL.html");
+    public void showInternalWebPage() {
+        myWebView.loadUrl("file:///android_asset/MinHTMLFIL.html");
     }
 
     @Override
@@ -57,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
         */
 
 
-    myWebView = findViewById(R.id.my_webview);
+        myWebView = findViewById(R.id.my_webview);
 
-    myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);
 
-    myWebView.setWebViewClient(new WebViewClient());
+        myWebView.setWebViewClient(new WebViewClient());
 
     }
 
@@ -75,19 +74,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
-            Log.d("==>","Will display external web page");
+            // Anropa showExternalWebPage() när External Web Page väljs från menyn
+            showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
-            Log.d("==>","Will display internal web page");
+            // Anropa showInternalWebPage() när Internal Web Page väljs från menyn
+            showInternalWebPage();
             return true;
         }
 
