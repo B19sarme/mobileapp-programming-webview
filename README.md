@@ -35,7 +35,7 @@ Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
 ![](android1.png)
-
+![](android2.png)
 
 Läs gärna:
 
