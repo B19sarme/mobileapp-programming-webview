@@ -3,32 +3,80 @@
 
 **Skriv din rapport här!**
 
-_Du kan ta bort all text som finns sedan tidigare_.
+I denna del så har det var en massa olika saker man har fått göra, lite kortfattat vad som har gjorts och ändrats i koden är följande. 
+Man fick ändra namn på olika namn samt lägga till externa och interna länkar för appen sedan så fick man göra en massa olika saker mer exakt vad som har ändrast kommer nedanför tillsammans med koderna som har ändrasts 
 
 ## Följande grundsyn gäller dugga-svar:
+Detta var första frågan där ändringen gjordes i strings.xml filen där man ändrade namnet på appen. 
+<string name="app_name">To-Do List Appen</string>
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Detta var när man gav internet tillgänglig för appen för att det skulle fungera. 
+  <uses-permission android:name="android.permission.INTERNET" />
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+I denna fråga så ändrades element från TextView till Webview för att det skulle fungera. Samt så är denna för frågan efter där de stod my_textview som ändrades till
+my_webview detta var dem 2 ändringar som gjordes. 
+<WebView
+android:id="@+id/my_webview"
 
-```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+
+Detta var nästa ändring där man till findViewbyId för Webview. Dessa ändringar gjordes för att kunna besvara dem 2 följande frågorna. samt så skapades en private 
+webview för att dem skulle lokaliserar och synca med varandra.
+myWebView = findViewById(R.id.my_webview);
+
+private WebView myWebView;
+
+Här skapdes en WebViewclient
+myWebView.setWebViewClient(new WebViewClient());
+
+Samt så skapades en Javascript för att få den att fungera och göra den enable.
+myWebView.getSettings().setJavaScriptEnabled(true);
+
+Här är min HTML som har lagts till i assets filen samt så kan man kolla på screenhoten där de bild på min html fil som skapdes. 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min HTML Fil</title>
+</head>
+<body>
+    <h1>To Do List Appen</h1>
+</body>
+</html>
+
+Följande koder är för dem 2 sista frågorna. Där det har skapats för koden för den externa och interna länkerna sedan så att koden ska köra för 
+att hämta dem rätta länkerna.
+
+public void showExternalWebPage() {
+myWebView.loadUrl("https://www.his.se/");
+}
+
+public void showInternalWebPage() {
+myWebView.loadUrl("file:///android_asset/HTML/MinHTMLFIL.html");
+}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_external_web) {
+            // Anropa showExternalWebPage() när External Web Page väljs från menyn
+            showExternalWebPage();
+            return true;
+        }
+
+        if (id == R.id.action_internal_web) {
+            // Anropa showInternalWebPage() när Internal Web Page väljs från menyn
+            showInternalWebPage();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
+
+
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
