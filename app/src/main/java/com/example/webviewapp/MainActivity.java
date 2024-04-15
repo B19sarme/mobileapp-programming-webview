@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showInternalWebPage() {
-        myWebView.loadUrl("file:///android_asset/MinHTMLFIL.html");
+        myWebView.loadUrl("file:///android_asset/HTML/MinHTMLFIL.html");
     }
 
     @Override
